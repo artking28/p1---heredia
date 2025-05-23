@@ -1,0 +1,19 @@
+<letter> ::= [a-z] | [A-Z]
+<digit> ::= [0-9]
+<opers> ::= "*" | "%" | "+" | "-" | "<<" | ">>" | "&" | "|"
+<space> ::= " "+
+
+<ID> ::= <letter> (<letter> | <digit>)*
+<number> ::= <digit>+
+<value> ::= <number> | <ID>
+<exp> ::= <value> (<opers> <exp>)* | "(" <exp> ")"
+<arg_assign> ::= "=" | ( <opers> "=" )
+
+<var_decl> ::= "def" <space> <ID> <space> "=" <space> <exp>
+<assign> ::= <ID> <space> <arg_assign> <space> <exp>
+<func> ::= "print(" <exp> ")"
+
+<stmt> ::= <space> (<var_decl> | <func> | <assign> ) <space>
+<stmts> ::= (<stmt> ("\n" | ";") )+
+
+<program> ::= "fun main()" <space> "{" <stmts> "}"

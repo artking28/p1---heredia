@@ -1,0 +1,64 @@
+/misc/output.bin
+
+##############################
+## macOS
+##############################
+.DS_Store
+
+##############################
+## Windows
+##############################
+Thumbs.db
+
+##############################
+## IntelliJ
+##############################
+out/
+assembler/.idea/
+.idea_modules/
+src/angular/node_modules/
+src/main/webapp/angular
+*.iml
+*.ipr
+*.iws
+node_modules/
+
+##############################
+## Eclipse
+##############################
+.settings/
+tmp/
+.metadata
+.classpath
+.project
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.factorypath
+
+##############################
+## NetBeans
+##############################
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+/out-tsc
+
+##############################
+## Visual Studio Code
+##############################
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+*.launch
+.c9/
