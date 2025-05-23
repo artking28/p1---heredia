@@ -25,8 +25,8 @@ func Tokenize(filename string) ([]models.Token, error) {
 	for _, run := range runes {
 		column++
 		if 'a' <= run && run <= 'z' ||
-				'A' <= run && run <= 'Z' ||
-				'0' <= run && run <= '9' {
+			'A' <= run && run <= 'Z' ||
+			'0' <= run && run <= '9' {
 			buffer.WriteRune(run)
 			continue
 		}
@@ -94,21 +94,21 @@ func Tokenize(filename string) ([]models.Token, error) {
 			tk := models.NewToken(pos, models.SUB, 1, run)
 			err = errors.Join(err, AppendToken(filename, &ret, tk))
 			break
-		case '*':
-			pos := utils.Pos{Line: int64(line), Column: int64(column)}
-			tk := models.NewToken(pos, models.MUL, 1, run)
-			err = errors.Join(err, AppendToken(filename, &ret, tk))
-			break
-		case '<':
-			pos := utils.Pos{Line: int64(line), Column: int64(column)}
-			tk := models.NewToken(pos, models.LOWER_THAN, 1, run)
-			err = errors.Join(err, AppendToken(filename, &ret, tk))
-			break
-		case '>':
-			pos := utils.Pos{Line: int64(line), Column: int64(column)}
-			tk := models.NewToken(pos, models.GREATER_THAN, 1, run)
-			err = errors.Join(err, AppendToken(filename, &ret, tk))
-			break
+		//case '*':
+		//	pos := utils.Pos{Line: int64(line), Column: int64(column)}
+		//	tk := models.NewToken(pos, models.MUL, 1, run)
+		//	err = errors.Join(err, AppendToken(filename, &ret, tk))
+		//	break
+		//case '<':
+		//	pos := utils.Pos{Line: int64(line), Column: int64(column)}
+		//	tk := models.NewToken(pos, models.LOWER_THAN, 1, run)
+		//	err = errors.Join(err, AppendToken(filename, &ret, tk))
+		//	break
+		//case '>':
+		//	pos := utils.Pos{Line: int64(line), Column: int64(column)}
+		//	tk := models.NewToken(pos, models.GREATER_THAN, 1, run)
+		//	err = errors.Join(err, AppendToken(filename, &ret, tk))
+		//	break
 		case ' ':
 			pos := utils.Pos{Line: int64(line), Column: int64(column)}
 			tk := models.NewToken(pos, models.SPACE, 1, run)
@@ -124,11 +124,11 @@ func Tokenize(filename string) ([]models.Token, error) {
 			tk := models.NewToken(pos, models.AND_BIT, 1, run)
 			err = errors.Join(err, AppendToken(filename, &ret, tk))
 			break
-		case '%':
-			pos := utils.Pos{Line: int64(line), Column: int64(column)}
-			tk := models.NewToken(pos, models.MOD, 1, run)
-			err = errors.Join(err, AppendToken(filename, &ret, tk))
-			break
+		//case '%':
+		//	pos := utils.Pos{Line: int64(line), Column: int64(column)}
+		//	tk := models.NewToken(pos, models.MOD, 1, run)
+		//	err = errors.Join(err, AppendToken(filename, &ret, tk))
+		//	break
 		default:
 			err = utils.GetUnexpectedTokenErr(filename, string(run), utils.Pos{Line: int64(line), Column: int64(column)})
 		}

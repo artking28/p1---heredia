@@ -14,7 +14,7 @@ type FuncCall struct {
 func (this FuncCall) WriteMemASM() (string, error) {
 	var ret string
 	if this.Name == "print" {
-		ret = "CPY m255, m99\n"
+		ret = "CPY m200, m99\n"
 	} else if this.Name == "exit" {
 		ret = "HLT\n"
 	}

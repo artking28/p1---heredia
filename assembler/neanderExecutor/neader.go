@@ -2,6 +2,7 @@ package neander
 
 import (
 	"fmt"
+	"log"
 )
 
 type Result struct {
@@ -27,9 +28,6 @@ func RunProgram(program []byte, hexa, printFinalState bool) (Result, []byte) {
 	var result Result
 	for i := padding; i < len(program); i += padding {
 		mnemonic := program[i]
-		if len(program) <= i+2 {
-			break
-		}
 		addr := program[i+2]
 		addrValueIndex := int(addr)*2 + padding
 		switch mnemonic {
@@ -82,7 +80,7 @@ func RunProgram(program []byte, hexa, printFinalState bool) (Result, []byte) {
 			i = len(program)
 			break
 		default:
-			i -= 2
+			log.Fatalf("Unknown minmonic, corrupted file.")
 		}
 	}
 
@@ -108,9 +106,6 @@ func PrintProgram(program []byte, hexa, printTail, continueAfterHlt bool) {
 	fmt.Print("\nProgram:\n")
 	for i := padding; i < len(program); i += padding {
 		mnemonic := program[i]
-		if len(program) <= i+2 {
-			break
-		}
 		addr := int(program[i+2])
 		addrV := program[addr*2+padding]
 		if hexa {
